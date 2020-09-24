@@ -1,0 +1,73 @@
+<div mat-dialog-content>
+    <div class="image-container">
+        <div>
+            <mat-label>Web Image</mat-label>
+        </div>
+        <img [src]="uploaded ? data.item.webImage : getImageLink + data.item.webImage">
+        <app-inforce-file-upload [onFileUpload]="onWebFileUpload.bind(this)"></app-inforce-file-upload>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <mat-label>Mobile Image</mat-label>
+        </div>
+        <img [src]="uploaded ? data.item.mobileImage : getImageLink + data.item.mobileImage">
+        <app-inforce-file-upload [onFileUpload]="onMobileFileUpload.bind(this)"></app-inforce-file-upload>
+    </div>
+
+
+    <div>
+        <mat-form-field>
+            <mat-label>Link To Product</mat-label>
+            <mat-select class="form-control" [(ngModel)]="data.item.productId">
+                <mat-option class="mat-primary" [value]="item._id" *ngFor="let item of data.products">{{item.model.bg}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field>
+            <mat-label>Index</mat-label>
+            <input matInput [(ngModel)]="data.item.index">
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field>
+            <mat-label>Text EN</mat-label>
+            <textarea matInput [(ngModel)]="data.item.text.en"></textarea>
+        </mat-form-field>
+        <div class="spacing"></div>
+        <mat-form-field>
+            <mat-label>Text BG</mat-label>
+            <textarea matInput [(ngModel)]="data.item.text.bg"></textarea>
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-label>Text Color</mat-label>
+        <input type="color" [(ngModel)]="data.item.textColor">
+    </div>
+
+    <div>
+        <mat-form-field>
+            <mat-label>Description EN</mat-label>
+            <textarea matInput [(ngModel)]="data.item.description.en"></textarea>
+        </mat-form-field>
+        <div class="spacing"></div>
+        <mat-form-field>
+            <mat-label>Description BG</mat-label>
+            <textarea matInput [(ngModel)]="data.item.description.bg"></textarea>
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-label>Description Color</mat-label>
+        <input type="color" [(ngModel)]="data.item.descriptionColor">
+    </div>
+
+    <div mat-dialog-actions>
+        <button mat-button (click)="onNoClick()">No Thanks</button>
+        <button mat-button (click)="onYesClick()" cdkFocusInitial>OK</button>
+    </div>
+</div>

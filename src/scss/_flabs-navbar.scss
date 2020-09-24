@@ -1,0 +1,93 @@
+/**
+ * The file contains common styles for all elements in the navbar.
+ * It is not in the menu's custom component because the styles should be applied
+ * to components that are included in the menu itself, and due to the shadow DOM
+ * the styles wont be propagated.
+ */
+
+@import 'flabs-vars';
+@import 'flabs-colors';
+
+.flabs-navbar {
+  margin-top: 2em;
+  padding: 0;
+
+  & .navbar-nav {
+    & .nav-item {
+      & .nav-link {
+        padding: 1em 1rem 1em 0;
+
+        &:hover {
+          background-color: darken($primary, 5%);
+        }
+
+        &.router-link-active {
+          background-color: $secondary;
+          color: $c-flabs-light;
+        }
+      }
+
+      & .flabs-sub-menu-opened {
+        background-color: darken($primary, 5%);
+      }
+      & .flabs-sub-menu {
+        background-color: darken($primary, 3%);
+
+        & .nav-link {
+          padding-left: 2rem;
+        }
+      }
+    }
+  }
+}
+
+.flabs-nav-link-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4rem;
+  min-width: 4rem;
+  max-width: 4rem;
+  height: 100%;
+}
+
+.flabs-user-settings {
+  margin-top: auto;
+
+  & .dropdown-toggle {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    height: 4em;
+    min-width: 4rem;
+    padding-left: 0;
+    padding-right: 0;
+    &::after {
+      display: none;
+    }
+
+    & .flabs-user-settings-creds {
+      display: flex;
+      flex-flow: column nowrap;
+      text-align: left;
+    }
+  }
+
+  & .dropdown-menu {
+    background-color: darken($primary, 3%);
+    border-top: 2px solid $secondary;
+
+    & .dropdown-item {
+      color: $c-flabs-light;
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: darken($primary, 8%);
+      }
+
+      & i {
+        width: 2rem;
+      }
+    }
+  }
+}

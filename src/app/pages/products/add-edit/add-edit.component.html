@@ -1,0 +1,237 @@
+<div mat-dialog-content>
+    <div class="image-container">
+        <div>
+            <mat-label>Images</mat-label>
+        </div>
+        <div *ngFor="let image of getImages">
+            <img [src]="getImageLink + image">
+            <button mat-button (click)="deleteImage(image)" mat-flat-button>delete</button>
+        </div>
+        <app-inforce-file-upload [onFileUpload]="onFileUpload.bind(this)"></app-inforce-file-upload>
+    </div>
+
+    <div>
+        <mat-form-field>
+            <mat-label>Category</mat-label>
+            <mat-select class="form-control" [(ngModel)]="data.item.category" (selectionChange)="setSubCategories($event)">
+                <mat-option class="mat-primary" [value]="item.products" *ngFor="let item of data.categories">{{item.title.bg}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field>
+            <mat-label>Sub Category</mat-label>
+            <mat-select class="form-control" [(ngModel)]="data.item.subCategory">
+                <mat-option class="mat-primary" [value]="item._id" *ngFor="let item of (subCategories || data.subCategories)">{{item.label.bg}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-checkbox [(ngModel)]="data.item.hidden">Hidden</mat-checkbox>
+    </div>
+
+
+    <div>
+        <mat-checkbox [(ngModel)]="data.item.promotion">Promotion</mat-checkbox>
+    </div>
+
+    <div>
+        <mat-checkbox [(ngModel)]="data.item.newProduct">New Product</mat-checkbox>
+    </div>
+
+    <div>
+        <mat-form-field>
+            <mat-label>Discount</mat-label>
+            <input matInput [(ngModel)]="data.item.discount">
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field>
+            <mat-label>Model EN</mat-label>
+            <textarea matInput [(ngModel)]="data.item.model.en"></textarea>
+        </mat-form-field>
+        <div class="spacing"></div>
+        <mat-form-field>
+            <mat-label>Model BG</mat-label>
+            <textarea matInput [(ngModel)]="data.item.model.bg"></textarea>
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field>
+            <mat-label>SubTitle EN</mat-label>
+            <textarea matInput [(ngModel)]="data.item.subTitle.en"></textarea>
+        </mat-form-field>
+        <div class="spacing"></div>
+        <mat-form-field>
+            <mat-label>SubTitle BG</mat-label>
+            <textarea matInput [(ngModel)]="data.item.subTitle.bg"></textarea>
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field>
+            <mat-label>Url</mat-label>
+            <input matInput [(ngModel)]="data.item.url">
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field>
+            <mat-label>Price</mat-label>
+            <input matInput [(ngModel)]="data.item.price">
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field>
+            <mat-label>Status</mat-label>
+            <mat-select class="form-control" [(ngModel)]="data.item.status">
+                <mat-option class="mat-primary" [value]="item" *ngFor="let item of productStatuses">{{item}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field>
+            <mat-label>Description EN</mat-label>
+            <textarea matInput [(ngModel)]="data.item.description.en"></textarea>
+        </mat-form-field>
+        <div class="spacing"></div>
+        <mat-form-field>
+            <mat-label>Description BG</mat-label>
+            <textarea matInput [(ngModel)]="data.item.description.bg"></textarea>
+        </mat-form-field>
+    </div>
+
+    <mat-label>Params</mat-label>
+    <div class="row">
+        <div class="half">
+            <div *ngFor="let param of data.item.params.en" class="small-margin-bottom">
+                <mat-form-field>
+                    <mat-label>Param</mat-label>
+                    <mat-select class="form-control" [(ngModel)]="param.key">
+                        <mat-option class="mat-primary" [value]="item" *ngFor="let item of paramsOptions" class="small-margin-bottom">{{item}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <br />
+                <mat-form-field>
+                    <mat-label>Key Info EN</mat-label>
+                    <textarea matInput [(ngModel)]="param.keyInfo"></textarea>
+                </mat-form-field>
+                <br />
+                <mat-form-field>
+                    <mat-label>Value EN</mat-label>
+                    <textarea matInput [(ngModel)]="param.value"></textarea>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="half">
+            <div *ngFor="let param of data.item.params.bg" class="small-margin-bottom relative">
+                <mat-form-field>
+                    <mat-label>Param</mat-label>
+                    <mat-select class="form-control" [(ngModel)]="param.key">
+                        <mat-option class="mat-primary" [value]="item" *ngFor="let item of paramsOptions">{{item}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <button class="right absolute" mat-button (click)="deleteParam(param)" mat-flat-button>Delete Param</button>
+                <br />
+                <mat-form-field>
+                    <mat-label>Key Info BG</mat-label>
+                    <textarea matInput [(ngModel)]="param.keyInfo"></textarea>
+                </mat-form-field>
+                <br />
+                <mat-form-field>
+                    <mat-label>Value BG</mat-label>
+                    <textarea matInput [(ngModel)]="param.value"></textarea>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <br />
+    <button class="right" mat-button (click)="addParam()" mat-flat-button>Add Param</button>
+    <br />
+
+    <mat-label>Specs</mat-label>
+    <div class="row">
+        <div class="half">
+            <div *ngFor="let param of data.item.specs.en" class="small-margin-bottom">
+                <mat-form-field>
+                    <mat-label>Key EN</mat-label>
+                    <textarea matInput [(ngModel)]="param.key"></textarea>
+                </mat-form-field>
+                <br />
+                <mat-form-field>
+                    <mat-label>Value EN</mat-label>
+                    <textarea matInput [(ngModel)]="param.value"></textarea>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="half">
+            <div *ngFor="let param of data.item.specs.bg" class="small-margin-bottom">
+                <mat-form-field>
+                    <mat-label>Key BG</mat-label>
+                    <textarea matInput [(ngModel)]="param.key"></textarea>
+                </mat-form-field>
+                <button class="right" mat-button (click)="deleteSpec(param)" mat-flat-button>Delete Spec</button>
+                <br />
+                <mat-form-field>
+                    <mat-label>Value BG</mat-label>
+                    <textarea matInput [(ngModel)]="param.value"></textarea>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <br />
+    <button class="right" mat-button (click)="addSpec()" mat-flat-button>Add Spec</button>
+    <br />
+
+    <mat-label>Extras</mat-label>
+    <div *ngFor="let extra of data.item.extras" class="small-margin-bottom">
+        <button class="right" mat-button (click)="deleteExtra(extra)" mat-flat-button>Delete Extra</button>
+        <div>
+            <mat-form-field>
+                <mat-label>Name EN</mat-label>
+                <textarea matInput [(ngModel)]="extra.key.en"></textarea>
+            </mat-form-field>
+            <div class="spacing"></div>
+            <mat-form-field>
+                <mat-label>Name BG</mat-label>
+                <textarea matInput [(ngModel)]="extra.key.bg"></textarea>
+            </mat-form-field>
+        </div>
+        <div *ngFor="let spec of extra.values" class="small-margin-bottom">
+            <button class="right" mat-button (click)="removeOption(extra, spec)" mat-flat-button>Remove Option</button>
+            <br />
+            <mat-form-field>
+                <mat-label>Key EN</mat-label>
+                <textarea matInput [(ngModel)]="spec.key.en"></textarea>
+            </mat-form-field>
+            <div class="spacing"></div>
+            <mat-form-field>
+                <mat-label>Key BG</mat-label>
+                <textarea matInput [(ngModel)]="spec.key.bg"></textarea>
+            </mat-form-field>
+            <br />
+            <mat-form-field>
+                <mat-label>Price</mat-label>
+                <input matInput [(ngModel)]="spec.price" />
+            </mat-form-field>
+            <div class="spacing"></div>
+            <mat-checkbox [(ngModel)]="spec.default">Default</mat-checkbox>
+        </div>
+        <br />
+        <button class="right" mat-button (click)="addOption(extra)" mat-flat-button>Add Option</button>
+    </div>
+    <br />
+    <button class="right" mat-button (click)="addExtra()" mat-flat-button>Add Extra</button>
+    <br />
+
+    <div mat-dialog-actions>
+        <button mat-button (click)="onNoClick()">No Thanks</button>
+        <button mat-button (click)="onYesClick()" cdkFocusInitial>OK</button>
+    </div>
+</div>

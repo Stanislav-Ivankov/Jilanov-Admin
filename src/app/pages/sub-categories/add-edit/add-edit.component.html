@@ -1,0 +1,34 @@
+<div mat-dialog-content>
+    <div>
+        <mat-form-field>
+            <mat-label>Category</mat-label>
+            <mat-select class="form-control" [(ngModel)]="data.item.category">
+                <mat-option class="mat-primary" [value]="item.products" *ngFor="let item of data.categories">{{item.title.bg}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field>
+            <mat-label>Index</mat-label>
+            <input matInput [(ngModel)]="data.item.index" type="number">
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field>
+            <mat-label>Label EN</mat-label>
+            <textarea matInput [(ngModel)]="data.item.label.en"></textarea>
+        </mat-form-field>
+        <div class="spacing"></div>
+        <mat-form-field>
+            <mat-label>Label BG</mat-label>
+            <textarea matInput [(ngModel)]="data.item.label.bg"></textarea>
+        </mat-form-field>
+    </div>
+
+    <div mat-dialog-actions>
+        <button mat-button (click)="onNoClick()">No Thanks</button>
+        <button mat-button (click)="onYesClick()" cdkFocusInitial>OK</button>
+    </div>
+</div>

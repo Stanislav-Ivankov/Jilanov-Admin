@@ -1,0 +1,37 @@
+/*******************************
+* MODAL AS LEFT/RIGHT SIDEBAR
+* Add "left" or "right" in modal parent div, after class="modal".
+*******************************/
+$side-page-width: 100%;
+
+.flabs-modal-left,
+.flabs-modal-right {
+  &.modal {
+    & .modal-dialog {
+      position: fixed;
+      margin: auto;
+      width: $side-page-width;
+      height: 100%;
+      transform: translate3d(0%, 0, 0);
+    }
+
+    & .modal-content {
+      height: 100%;
+      overflow-y: auto;
+    }
+
+    & .modal-body {
+      padding: 15px 15px 80px;
+      overflow-y: auto;
+    }
+  }
+}
+
+/* Right */
+.flabs-modal-right {
+  &.modal {
+    & .modal-dialog {
+      right: 0;
+    }
+  }
+}

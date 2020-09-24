@@ -1,0 +1,3 @@
+@mixin transition-width {
+  transition: width 400ms ease-in, min-width 400ms ease-in, max-width 400ms ease-in;
+}

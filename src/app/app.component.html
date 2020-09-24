@@ -1,0 +1,26 @@
+<ng-container *ngIf="loggedIn">
+
+	<mat-toolbar>
+		<mat-toolbar-row>
+			<h1>Jilanov Admin</h1>
+
+			<ng-container>
+				<a mat-button routerLink="/carousel">Carousel</a>
+				<a mat-button routerLink="/categories">Categories</a>
+				<a mat-button routerLink="/sub-categories">Sub Categories</a>
+				<!-- <a mat-button routerLink="/filters">Filters</a> -->
+				<a mat-button routerLink="/products">Products</a>
+				<a mat-button routerLink="/messages">Messages</a>
+				<a mat-button routerLink="/orders">Orders</a>
+				<!-- <a mat-button routerLink="/users">Users</a>
+				<a mat-button routerLink="/footer-links">Footer Links</a> -->
+				<a mat-button routerLink="/image-editor">Image Editor</a>
+			</ng-container>
+
+			<mat-icon class="Logout-Button" (click)="logout()" aria-hidden="false" aria-label="Exit">exit_to_app</mat-icon>
+		</mat-toolbar-row>
+	</mat-toolbar>
+
+</ng-container>
+
+<router-outlet></router-outlet>

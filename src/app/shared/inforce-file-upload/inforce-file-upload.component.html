@@ -1,0 +1,13 @@
+<div id="file-container" class="row">
+    <div *ngIf="!visibleDropBox" style="margin-left: 170px; width: 15%; margin-top: 13px;">
+        <button type="button" class="form-control" style="color: black;" mat-raised-button (click)="fileInput.click()">Attach File</button>
+        <input hidden (change)="onFileSelected($event)" #fileInput id="file" type="file" multiple>
+    </div>
+    <div *ngIf="visibleDropBox" style="margin-left: 145px; margin-top: 1%; width: 100%;">
+        <form class="file-upload">
+        <input type="file" name="dropbox" multiple (change)="onFileSelected($event)">
+        <p>Drop your files here</p>
+        <!-- <p>{{ ‘gallery:files-upload’ | translate }}: {{filesToUpload.length}}</p> -->
+        </form>
+    </div>
+</div>

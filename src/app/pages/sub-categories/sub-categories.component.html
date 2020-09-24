@@ -1,0 +1,10 @@
+<button mat-button (click)="onAddNew()" mat-flat-button class="right">+</button>
+<app-inforce-table
+	[columns]="columns"
+	[dataSource]="subCategories"
+	[hasPreviewIcon]="true"
+    [hasDeleteIcon]="true"
+	[onEdit]="onEdit.bind(this)"
+	[onDelete]="onDelete.bind(this)"
+></app-inforce-table>
+<div *ngIf="loading" class="loader"></div>

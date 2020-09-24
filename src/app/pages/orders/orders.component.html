@@ -1,0 +1,8 @@
+<app-inforce-table
+	[columns]="columns"
+	[dataSource]="orders"
+	[hasPreviewIcon]="true"
+    [hasDeleteIcon]="true"
+	[onDelete]="onDelete.bind(this)"
+></app-inforce-table>
+<div *ngIf="loading" class="loader"></div>

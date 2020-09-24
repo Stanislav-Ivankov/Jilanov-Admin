@@ -1,0 +1,45 @@
+.download-btn {
+    border: 1px solid #0747A6; 
+    border-radius: 15%; 
+    color: #0747A6; 
+    font-size: 34px;
+    cursor: pointer;
+}
+
+.link-btn {
+    border: 1px solid #0747A6; 
+    border-radius: 15%; 
+    color: #0747A6; 
+    font-size: 34px; 
+    margin: 10px; 
+    cursor: pointer;
+}
+
+.view-btn {
+    margin-top: 2%; 
+    height: 34px; 
+    padding-top: 3px;
+    cursor: pointer;
+}
+
+.buttons-container {
+    position: relative; 
+    display: inline; 
+    bottom: -5px;
+}
+
+.delete-btn {
+    border: 1px solid #0747A6; 
+    border-radius: 15%; 
+    color: #0747A6; 
+    font-size: 34px;
+    cursor: pointer;
+}
+
+.bulk-download-btn {
+    border: 1px solid #0747A6; 
+    border-radius: 15%; 
+    color: #0747A6; 
+    font-size: 34px;
+    cursor: pointer;
+}

@@ -1,0 +1,19 @@
+$c-flabs-primary: #221E20;
+$c-flabs-accent: #00B0FF;
+$c-flabs-success: #76c000;
+$c-flabs-light: #ffffff;
+$c-flabs-dark-light: #f0f3f6;
+$c-flabs-dark: darken($c-flabs-primary, 10%);
+$c-flabs-warn: #dc3545;
+$c-flabs-info: #c9f0ff;
+$c-flabs-divider: #d4d4d4;
+
+// Bootstrap customization
+$primary: $c-flabs-primary;
+$secondary: $c-flabs-accent;
+$success: $c-flabs-success;
+$danger: $c-flabs-warn;
+$info: $c-flabs-info;
+$dark: $c-flabs-dark;
+$enable-rounded: false;
+$enable-shadows: true;

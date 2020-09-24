@@ -1,0 +1,15 @@
+.Row {
+	display: flex;
+	flex-wrap: wrap;
+
+	.Column-Left, .Column-Right {
+		margin-bottom: 300px;
+		padding: 0px 12.5px 0px 0px;
+	}
+}
+
+button {
+	float: right;
+	font-size: 25px;
+	color: green;
+}
